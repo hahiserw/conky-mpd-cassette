@@ -11,7 +11,7 @@ I once saw this wallpaper and I thought it would be cool to see it animated
 with reels spining and changing size according to progress of current playing
 music. I was using conky and I thought: why not do it in conky? And I did, it
 was about 2 years ago. I had also tried "porting" it to love (2d lua
-framework), because I thought it could run with lower cpu usage, but there were
+framework), because I thought it could run with lower cpu usage, but there was
 no transparent background, so it wouldn't look as cool (maybe one could just
 set a background and draw cassette over it, but for some reason I just wanted
 transparent background). I also thought about writing Xorg program that would
