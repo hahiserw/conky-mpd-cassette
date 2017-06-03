@@ -1,0 +1,52 @@
+#!/bin/bash
+
+mpc="mpc -h localhost"
+
+get_minutes() {
+	echo ${1/:[[:digit:]]*/}
+}
+
+get_seconds() {
+	seconds=${1/[[:digit:]]*:/}
+	echo ${seconds/0*/}
+}
+
+
+playlist=$($mpc playlist -f %time%)
+playlist_position=$($mpc current -f %position%)
+
+
+current_time_t=$($mpc | head -2 | tail -1 | awk '{print $3}')
+current_time_t=${current_time_t/\/*/}
+# echo $current_time_t
+# current_time_t=${current_time_t//[^[:alpha:]]/}
+current_time_t=${current_time_t//[^:[:digit:]]/}
+# echo $current_time_t
+current_time_minutes=$(get_minutes $current_time_t)
+# current_time_minutes=${current_time_minutes//[^[:alpha:]]/}
+current_time_seconds=$(get_seconds $current_time_t)
+# current_time_seconds=${current_time_seconds//[^[:alpha:]]/}
+current_time=$((60 * current_time_minutes + current_time_seconds))
+
+
+duration=0
+i=2 # why?
+
+while read song_duration_t; do
+	minutes=$(get_minutes $song_duration_t)
+	seconds=$(get_seconds $song_duration_t)
+
+	duration=$((duration + 60 * minutes + seconds))
+
+	if [[ $i == $playlist_position ]]; then
+		current_time=$((current_time + duration))
+	fi
+
+	i=$((i + 1))
+done <<< "$playlist"
+
+
+echo "$current_time $duration"
+
+# updates file with stats
+# $1 == 'once': run once

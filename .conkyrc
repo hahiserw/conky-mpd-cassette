@@ -1,0 +1,55 @@
+alignment top_left
+# border_width 1
+# cpu_avg_samples 2
+# net_avg_samples 2
+
+default_outline_color white
+default_shade_color white
+
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+
+use_xft yes
+xftfont DejaVu Sans Mono:size=12
+
+no_buffers yes
+out_to_console no
+out_to_stderr no
+extra_newline no
+
+own_window yes
+own_window_class Conky
+own_window_type desktop
+own_window_transparent no
+own_window_argb_visual yes
+own_window_argb_value 0
+background no
+
+stippled_borders 0
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+
+double_buffer yes
+
+
+gap_x 40
+gap_y 0
+
+# minimum_size 1000 600
+#minimum_size 1920 1200
+minimum_size 1200 1920
+
+default_color FFFFFF
+
+# update_interval 0.05
+update_interval 0.03
+
+lua_load ~/.conky/cassette.lua
+lua_startup_hook  init
+lua_draw_hook_pre render
+
+TEXT
