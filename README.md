@@ -5,7 +5,7 @@ Animated cassette in conky that shows current mpd's playlist status
 
 # Story
 
-![wallpaper sample](https://github.com/hahiserw/conky-mpd-cassette/raw/master/src/wallpaper-sample.png)
+![wallpaper sample](https://raw.githubusercontent.com/hahiserw/conky-mpd-cassette/master/wallpaper-sample.png)
 
 I once saw this wallpaper and I thought it would be cool to see it animated
 with reels spining and changing size according to progress of current playing
